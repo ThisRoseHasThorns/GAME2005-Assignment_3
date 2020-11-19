@@ -67,6 +67,32 @@ void Player::clean()
 {
 }
 
+
+void Player::moveLeft() {
+	m_direction.x = -1;
+}
+
+void Player::moveRight() {
+	m_direction.x = 1;
+}
+
+void Player::moveUp() {
+	m_direction.y = -1;
+}
+
+void Player::moveDown() {
+	m_direction.y = 1;
+}
+
+void Player::stopMovingX() {
+	m_direction.x = 0;
+}
+
+void Player::stopMovingY() {
+	m_direction.y = 0;
+}
+
+
 void Player::setAnimationState(const PlayerAnimationState new_state)
 {
 	m_currentAnimationState = new_state;

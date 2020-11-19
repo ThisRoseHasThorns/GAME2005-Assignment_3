@@ -42,6 +42,12 @@ void Plane::draw()
 
 void Plane::update()
 {
+	float deltaTime = 1.0f / 60.f;
+
+	getRigidBody()->acceleration = glm::vec2(0, 9.8 * 3.0f);
+
+	getRigidBody()->velocity = getRigidBody()->velocity + (getRigidBody()->acceleration * deltaTime);
+	getTransform()->position = getTransform()->position + getRigidBody()->velocity * deltaTime;
 }
 
 void Plane::clean()

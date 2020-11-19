@@ -78,11 +78,21 @@ void PlayScene::handleEvents()
 		{
 			m_pPlayer->setAnimationState(PLAYER_RUN_LEFT);
 			m_playerFacingRight = false;
+			m_pPlayer->moveLeft();
+		}
+		if (EventManager::Instance().isKeyDown(SDL_SCANCODE_W))
+		{
+			m_pPlayer->moveUp();
+		}
+		if (EventManager::Instance().isKeyDown(SDL_SCANCODE_S))
+		{
+			m_pPlayer->moveDown();
 		}
 		else if (EventManager::Instance().isKeyDown(SDL_SCANCODE_D))
 		{
 			m_pPlayer->setAnimationState(PLAYER_RUN_RIGHT);
 			m_playerFacingRight = true;
+			m_pPlayer->moveRight();
 		}
 		else
 		{
