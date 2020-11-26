@@ -44,7 +44,7 @@ void Bullet::update()
 {
 	float deltaTime = 1.0f / 60.f;
 
-	getRigidBody()->acceleration = glm::vec2(0, 9.8 * 3.0f);
+	getRigidBody()->acceleration = glm::vec2(0, 9.8);
 
 	getRigidBody()->velocity = getRigidBody()->velocity + (getRigidBody()->acceleration * deltaTime);
 	getTransform()->position = getTransform()->position + getRigidBody()->velocity * deltaTime;

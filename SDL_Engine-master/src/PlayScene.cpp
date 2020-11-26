@@ -130,8 +130,6 @@ void PlayScene::start()
 	m_guiTitle = "Play Scene";
 	
 	// Plane Sprite
-	m_pBullet = new Bullet();
-	addChild(m_pBullet);
 
 	// Player Sprite
 	m_pPlayer = new Player();
@@ -141,7 +139,8 @@ void PlayScene::start()
 	m_pPool = new BulletPool(10);
 	for (int i = 0; i < 10; i++) {
 		Bullet* bullet = m_pPool->Spawn();
-		bullet->getTransform()->position = glm::vec2(50 * i, 0);
+		addChild(bullet);
+		bullet->getTransform()->position = glm::vec2(50 + rand() % 700, 0);
 		
 	}
 

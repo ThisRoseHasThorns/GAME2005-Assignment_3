@@ -30,7 +30,7 @@ private:
 
 	BulletPool* m_pPool;
 
-	Bullet* m_pBullet;
+	
 	Player* m_pPlayer;
 	bool m_playerFacingRight;
 

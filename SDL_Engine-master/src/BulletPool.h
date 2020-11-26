@@ -4,17 +4,14 @@
 class BulletPool
 {
 public:
-
 	BulletPool(int);
 	~BulletPool();
 
 	int size;
 	int index = 0;
 
-	Bullet Spawn();
+	Bullet* Spawn();
 private:
-
-
 	Bullet* m_pBullets;
 
 };
