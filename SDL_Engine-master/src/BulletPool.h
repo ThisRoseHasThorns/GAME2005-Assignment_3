@@ -1,4 +1,6 @@
 #pragma once
+#ifndef __BULLETPOOL__
+#define __BULLETPOOL__
 #include "Bullet.h"
 
 class BulletPool
@@ -15,4 +17,6 @@ private:
 	std::vector<Bullet*> inactive;
 
 };
+
+#endif
 

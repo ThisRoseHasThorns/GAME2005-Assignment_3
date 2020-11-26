@@ -6,12 +6,15 @@ using namespace std;
 BulletPool::BulletPool(int size) {
 
 	for (int i = 0; i < size; i++) {
-		inactive.push_back(new Bullet());
+		inactive.push_back(new Bullet(this));
 	}
 	
 	std::cout << "bullet pool created with size " << size << std::endl;
 
 }
+
+BulletPool::~BulletPool()
+= default;
 
 Bullet* BulletPool::Spawn() {
 	Bullet* bullet = NULL;
@@ -32,10 +35,10 @@ void BulletPool::Despawn(Bullet* bullet) {
 	bullet->Reset();
 	inactive.push_back(bullet);
 
-	for (int i = 0; i < active.size(); i++) {
-		if (active.at(i) == bullet) {
-			active.at(i) = active.back();
-			active.pop_back();
+	for (std::vector<Bullet*>::iterator myiter = active.begin(); myiter != active.end(); myiter++) {
+		if (*myiter == bullet) {
+			active.erase(myiter);
+			return;
 		}
 	}
 }

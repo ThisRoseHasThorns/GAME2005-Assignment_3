@@ -141,7 +141,7 @@ void PlayScene::start()
 		Bullet* bullet = m_pPool->Spawn();
 		if (bullet) {
 			addChild(bullet);
-			bullet->getTransform()->position = glm::vec2(50 + rand() % 700, 0);
+			bullet->getTransform()->position = glm::vec2(50 + rand() % 700, rand() % 100 * -1);
 		}
 	}
 
