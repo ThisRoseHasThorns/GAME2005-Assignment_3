@@ -7,8 +7,13 @@ public:
 
 	BulletPool(int);
 	~BulletPool();
+
+	int size;
+	int index = 0;
+
+	Bullet Spawn();
 private:
-	void populate();
+
 
 	Bullet* m_pBullets;
 

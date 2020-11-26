@@ -10,8 +10,6 @@
 PlayScene::PlayScene()
 {
 	PlayScene::start();
-
-	m_pPool = new BulletPool(10);
 }
 
 PlayScene::~PlayScene()
@@ -139,6 +137,13 @@ void PlayScene::start()
 	m_pPlayer = new Player();
 	addChild(m_pPlayer);
 	m_playerFacingRight = true;
+
+	m_pPool = new BulletPool(10);
+	for (int i = 0; i < 10; i++) {
+		Bullet* bullet = m_pPool->Spawn();
+		bullet->getTransform()->position = glm::vec2(50 * i, 0);
+		
+	}
 
 	// Back Button
 	m_pBackButton = new Button("../Assets/textures/backButton.png", "backButton", BACK_BUTTON);
