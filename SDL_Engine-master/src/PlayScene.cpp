@@ -137,11 +137,12 @@ void PlayScene::start()
 	m_playerFacingRight = true;
 
 	m_pPool = new BulletPool(10);
-	for (int i = 0; i < 10; i++) {
+	for (int i = 0; i < 12; i++) {
 		Bullet* bullet = m_pPool->Spawn();
-		addChild(bullet);
-		bullet->getTransform()->position = glm::vec2(50 + rand() % 700, 0);
-		
+		if (bullet) {
+			addChild(bullet);
+			bullet->getTransform()->position = glm::vec2(50 + rand() % 700, 0);
+		}
 	}
 
 	// Back Button

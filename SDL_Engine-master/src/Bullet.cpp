@@ -16,13 +16,10 @@ Bullet::Bullet()
 	// set frame height
 	setHeight(65);
 
-	getTransform()->position = glm::vec2(400.0f, 200.0f);
-	getRigidBody()->velocity = glm::vec2(0.0f, 0.0f);
-	getRigidBody()->acceleration = glm::vec2(0.0f, 0.0f);
-	getRigidBody()->isColliding = false;
+	getTransform()->position = glm::vec2(700.0f, 300.0f);
 	setType(PLANE);
 
-	m_buildAnimations();
+	Reset();
 }
 
 Bullet::~Bullet()
@@ -30,28 +27,37 @@ Bullet::~Bullet()
 
 void Bullet::draw()
 {
-	// alias for x and y
-	const auto x = getTransform()->position.x;
-	const auto y = getTransform()->position.y;
+	if (active) {
+		// alias for x and y
+		const auto x = getTransform()->position.x;
+		const auto y = getTransform()->position.y;
 
-	// draw the plane sprite with simple propeller animation
-	TextureManager::Instance()->playAnimation(
-		"spritesheet", getAnimation("plane"),
-		x, y, 0.5f, 0, 255, true);
+		// draw the plane sprite with simple propeller animation
+		TextureManager::Instance()->playAnimation(
+			"spritesheet", getAnimation("plane"),
+			x, y, 0.5f, 0, 255, true);
+	}
+
 }
 
 void Bullet::update()
 {
-	float deltaTime = 1.0f / 60.f;
-
-	getRigidBody()->acceleration = glm::vec2(0, 9.8);
-
-	getRigidBody()->velocity = getRigidBody()->velocity + (getRigidBody()->acceleration * deltaTime);
-	getTransform()->position = getTransform()->position + getRigidBody()->velocity * deltaTime;
+	if (active) {
+		float deltaTime = 1.0f / 60.f;
+		getRigidBody()->velocity = getRigidBody()->velocity + (getRigidBody()->acceleration * deltaTime);
+		getTransform()->position = getTransform()->position + getRigidBody()->velocity * deltaTime;
+	}
 }
 
 void Bullet::clean()
 {
+}
+
+void Bullet::Reset() {
+	active = false;
+	getRigidBody()->velocity = glm::vec2(0.0f, 0.0f);
+	getRigidBody()->acceleration = glm::vec2(0., 9.8);
+	getRigidBody()->isColliding = false;
 }
 
 void Bullet::m_buildAnimations()

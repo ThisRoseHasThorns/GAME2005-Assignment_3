@@ -15,6 +15,10 @@ public:
 	virtual void update() override;
 	virtual void clean() override;
 
+	void Reset();
+
+	bool active = false;
+
 private:
 	void m_buildAnimations();
 };

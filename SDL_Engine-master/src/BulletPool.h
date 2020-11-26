@@ -7,12 +7,12 @@ public:
 	BulletPool(int);
 	~BulletPool();
 
-	int size;
-	int index = 0;
-
 	Bullet* Spawn();
+	void Despawn(Bullet*);
 private:
-	Bullet* m_pBullets;
+
+	std::vector<Bullet*> active;
+	std::vector<Bullet*> inactive;
 
 };
 
