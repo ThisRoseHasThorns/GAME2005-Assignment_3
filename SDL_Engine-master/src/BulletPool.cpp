@@ -19,6 +19,7 @@ Bullet* BulletPool::Spawn() {
 		bullet = inactive.back();
 		bullet->active = true;
 		inactive.pop_back();
+		active.push_back(bullet);
 	}
 	else {
 		std::cout << "error: max bullets spwawned" << std::endl;
@@ -29,4 +30,12 @@ Bullet* BulletPool::Spawn() {
 
 void BulletPool::Despawn(Bullet* bullet) {
 	bullet->Reset();
+	inactive.push_back(bullet);
+
+	for (int i = 0; i < active.size(); i++) {
+		if (active.at(i) == bullet) {
+			active.at(i) = active.back();
+			active.pop_back();
+		}
+	}
 }
