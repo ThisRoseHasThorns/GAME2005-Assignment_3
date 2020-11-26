@@ -4,11 +4,11 @@
 
 #include "Sprite.h"
 
-class Plane final : public Sprite
+class Bullet final : public Sprite
 {
 public:
-	Plane();
-	~Plane();
+	Bullet();
+	~Bullet();
 
 	// Life Cycle Functions
 	virtual void draw() override;
