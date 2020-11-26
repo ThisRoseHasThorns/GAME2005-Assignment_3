@@ -1,7 +1,7 @@
 #include "Bullet.h"
 #include "TextureManager.h"
 
-Plane::Plane()
+Bullet::Bullet()
 {
 	TextureManager::Instance()->loadSpriteSheet(
 		"../Assets/sprites/atlas.txt",
@@ -25,10 +25,10 @@ Plane::Plane()
 	m_buildAnimations();
 }
 
-Plane::~Plane()
+Bullet::~Bullet()
 = default;
 
-void Plane::draw()
+void Bullet::draw()
 {
 	// alias for x and y
 	const auto x = getTransform()->position.x;
@@ -40,7 +40,7 @@ void Plane::draw()
 		x, y, 0.5f, 0, 255, true);
 }
 
-void Plane::update()
+void Bullet::update()
 {
 	float deltaTime = 1.0f / 60.f;
 
@@ -50,11 +50,11 @@ void Plane::update()
 	getTransform()->position = getTransform()->position + getRigidBody()->velocity * deltaTime;
 }
 
-void Plane::clean()
+void Bullet::clean()
 {
 }
 
-void Plane::m_buildAnimations()
+void Bullet::m_buildAnimations()
 {
 	Animation planeAnimation = Animation();
 

@@ -10,6 +10,8 @@
 PlayScene::PlayScene()
 {
 	PlayScene::start();
+
+	m_pPool = new BulletPool(10);
 }
 
 PlayScene::~PlayScene()
@@ -130,8 +132,8 @@ void PlayScene::start()
 	m_guiTitle = "Play Scene";
 	
 	// Plane Sprite
-	m_pPlaneSprite = new Plane();
-	addChild(m_pPlaneSprite);
+	m_pBullet = new Bullet();
+	addChild(m_pBullet);
 
 	// Player Sprite
 	m_pPlayer = new Player();

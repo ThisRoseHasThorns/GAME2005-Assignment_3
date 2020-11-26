@@ -1,6 +1,6 @@
 #pragma once
-#ifndef __PLANE__
-#define __PLANE__
+#ifndef __BULLET__
+#define __BULLET__
 
 #include "Sprite.h"
 
