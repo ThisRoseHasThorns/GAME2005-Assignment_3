@@ -3,7 +3,7 @@
 #define __BULLET__
 
 #include "Sprite.h"
-#include "BulletPool.h"
+
 
 class Bullet final : public Sprite
 {
@@ -17,12 +17,12 @@ public:
 	virtual void clean() override;
 
 	void Reset();
-	void Despawn();
+	
 
 	bool active = false;
 
 private:
-	BulletPool* m_pPool;
+
 	void m_buildAnimations();
 };
 

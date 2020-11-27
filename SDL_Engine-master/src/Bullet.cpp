@@ -47,9 +47,7 @@ void Bullet::update()
 		getRigidBody()->velocity = getRigidBody()->velocity + (getRigidBody()->acceleration * deltaTime);
 		getTransform()->position = getTransform()->position + getRigidBody()->velocity * deltaTime;
 
-		if (getTransform()->position.y > 650) {
-			Despawn();
-		}
+		
 	}
 }
 
@@ -62,10 +60,6 @@ void Bullet::Reset() {
 	getRigidBody()->velocity = glm::vec2(0.0f, 0.0f);
 	getRigidBody()->acceleration = glm::vec2(0., 9.8);
 	getRigidBody()->isColliding = false;
-}
-
-void Bullet::Despawn() {
-	m_pPool->Despawn(this);
 }
 
 void Bullet::m_buildAnimations()
