@@ -28,7 +28,18 @@ void PlayScene::draw()
 
 void PlayScene::update()
 {
-	updateDisplayList();
+	
+
+		updateDisplayList();
+		int mouse_x, mouse_y;
+		if (SDL_GetMouseState(&mouse_x, &mouse_y))
+		{
+			m_pPlayer->getTransform()->position.x = mouse_x;
+			m_pPlayer->getTransform()->position.y = mouse_y;
+		}
+		m_pPlayer->update();
+		CollisionManager::AABBCheck(m_pBullet, m_pPlayer);
+
 }
 
 void PlayScene::clean()
@@ -41,43 +52,13 @@ void PlayScene::handleEvents()
 	EventManager::Instance().update();
 
 	// handle player movement with GameController
-	if (SDL_NumJoysticks() > 0)
-	{
-		if (EventManager::Instance().getGameController(0) != nullptr)
-		{
-			const auto deadZone = 10000;
-			if (EventManager::Instance().getGameController(0)->LEFT_STICK_X > deadZone)
-			{
-				m_pPlayer->setAnimationState(PLAYER_RUN_RIGHT);
-				m_playerFacingRight = true;
-			}
-			else if (EventManager::Instance().getGameController(0)->LEFT_STICK_X < -deadZone)
-			{
-				m_pPlayer->setAnimationState(PLAYER_RUN_LEFT);
-				m_playerFacingRight = false;
-			}
-			else
-			{
-				if (m_playerFacingRight)
-				{
-					m_pPlayer->setAnimationState(PLAYER_IDLE_RIGHT);
-				}
-				else
-				{
-					m_pPlayer->setAnimationState(PLAYER_IDLE_LEFT);
-				}
-			}
-		}
-	}
-
+	
 
 	// handle player movement if no Game Controllers found
 	if (SDL_NumJoysticks() < 1)
 	{
 		if (EventManager::Instance().isKeyDown(SDL_SCANCODE_A))
 		{
-			m_pPlayer->setAnimationState(PLAYER_RUN_LEFT);
-			m_playerFacingRight = false;
 			m_pPlayer->moveLeft();
 		}
 		if (EventManager::Instance().isKeyDown(SDL_SCANCODE_W))
@@ -90,20 +71,7 @@ void PlayScene::handleEvents()
 		}
 		else if (EventManager::Instance().isKeyDown(SDL_SCANCODE_D))
 		{
-			m_pPlayer->setAnimationState(PLAYER_RUN_RIGHT);
-			m_playerFacingRight = true;
 			m_pPlayer->moveRight();
-		}
-		else
-		{
-			if (m_playerFacingRight)
-			{
-				m_pPlayer->setAnimationState(PLAYER_IDLE_RIGHT);
-			}
-			else
-			{
-				m_pPlayer->setAnimationState(PLAYER_IDLE_LEFT);
-			}
 		}
 	}
 	

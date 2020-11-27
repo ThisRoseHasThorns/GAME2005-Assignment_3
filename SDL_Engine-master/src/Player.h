@@ -24,16 +24,15 @@ public:
 	void stopMovingY();
 
 	// setters
-	void setAnimationState(PlayerAnimationState new_state);
 
 private:
-	void m_buildAnimations();
+
 
 	const float SPEED = 100.0f;
 	const float ACCELERATION = 10.0f;
 	glm::vec2 m_direction;
 
-	PlayerAnimationState m_currentAnimationState;
+
 };
 
 #endif /* defined (__PLAYER__) */
