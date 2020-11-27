@@ -187,7 +187,6 @@
     <ClCompile Include="..\src\Target.cpp" />
     <ClCompile Include="..\src\TextureManager.cpp" />
     <ClCompile Include="..\src\Util.cpp" />
-    <ClCompile Include="BulletManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\IMGUI\imconfig.h" />
@@ -235,7 +234,6 @@
     <ClInclude Include="..\src\TextureManager.h" />
     <ClInclude Include="..\src\Transform.h" />
     <ClInclude Include="..\src\Util.h" />
-    <ClInclude Include="BulletManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />

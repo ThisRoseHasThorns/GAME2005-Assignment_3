@@ -6,7 +6,7 @@ using namespace std;
 BulletPool::BulletPool(int size) {
 
 	for (int i = 0; i < size; i++) {
-		inactive.push_back(new Bullet(this));
+		inactive.push_back(new Bullet());
 	}
 	
 	std::cout << "bullet pool created with size " << size << std::endl;
